@@ -1,6 +1,24 @@
+import os
+
 board = [[7,8,9],[4,5,6],[1,2,3]]
 currentPlayer = 1
+mmPos = 0
 
+#Experimental/Not working
+def mainMenu():
+  k = input()
+  print(k)
+  while True:
+    os.system('cls')
+    print("Select Game Mode")
+    if mmPos == 0:
+      print("[1 Player] 2-PLayers")
+ #     k = inkey()
+  #    if (k == 4) or (k == 19):
+#        print("1 Player [2-PLayers]")
+ #       mmPos = 1
+    if mmPos == 1:
+      print("1 Player [2-PLayers]")
 
 def newGame():
   global board
@@ -20,6 +38,10 @@ def theresAWinner(player):
     return False
 			
 def playerMove(boardR, boardC, player):
+ # if player == 1:
+ #   board[boardR][boardC] = 'X'
+  #else:
+  #  board[boardR][boardC] = 'O'
   board[boardR][boardC] = player
 
 def markBoard(square, player):
@@ -40,7 +62,10 @@ def markBoard(square, player):
   elif ((square is 2) and (board[2][1] is 0)):
     playerMove(2,1,player)  
   elif ((square is 3) and (board[2][2] is 0)):
-    playerMove(2,2,player)  
+    playerMove(2,2,player)
+  else:
+    return False
+  return True
 	
 def executePlayerTurn(player):
   print("Player", player)
@@ -54,11 +79,13 @@ def executePlayerTurn(player):
     if square < 0:
       print("Please select a real spot.")
       continue
+    elif markBoard(square, player) == False:
+      print("Space already occupied")
+      continue
     else:
       break
     
   print()
-  markBoard(square, player)
    
   printBoard()
   
@@ -70,11 +97,9 @@ def executePlayerTurn(player):
   else:
     executePlayerTurn(1)
 	
-def startGame():
+def start2PGame():
 	printBoard()
 	newGame()
 	executePlayerTurn(1)
 	
-
-
-startGame()
+start2PGame()
