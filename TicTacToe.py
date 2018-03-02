@@ -1,4 +1,5 @@
 import os
+#Written by Joshua Martinez
 
 board = [[7,8,9],[4,5,6],[1,2,3]]
 currentPlayer = 1
